@@ -1,0 +1,9 @@
+# helm_deploy.yaml
+
+script: |
+  if [[ $# -ne 2 ]]; then
+    echo "Usage: $0 <environment> <namespace>"
+    exit 1
+  fi
+
+  helm upgrade --install --namespace "$2"  --values "$2.yaml" berekeley-app ./helm/charts/berekeley-app
